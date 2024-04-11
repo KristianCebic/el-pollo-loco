@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <html translate="no">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>El Pollo Loco</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="img/2_character_pepe/6_favicon/favicon-16x16.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@500&family=Josefin+Sans:ital,wght@0,700;1,700&family=Kalnia:wght@300&family=Open+Sans:wght@300;600&family=Raleway:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Josefin+Sans:ital,wght@0,700;1,700&family=Kalnia:wght@300&family=Open+Sans:wght@300;600&family=Raleway:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Inter:wght@500&family=Josefin+Sans:ital,wght@0,700;1,700&family=Kalnia:wght@300&family=Open+Sans:wght@300;600&family=Raleway:wght@500&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/start-screen.class.js"></script>
+    <script src="models/end-screen.class.js"></script>
+    <script src="models/world-game-logic.class.js"></script>
+    <script src="models/world-ui.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/small_chicken.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/status-bar.class.js"></script>
+    <script src="models/coins.class.js"></script>
+    <script src="models/bottles.class.js"></script>
+    <script src="models/background-object.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="levels/level1.js"></script>
+  </head>
+
+  <body onload="init(), worldUI.checkIfShowTitel()">
+
+    <div id="titel">El Pollo Loco</div>
+    <div id="turnDevice">Please turn device</div>
+
+    <div class="justifyCenter">
+
+
+      <canvas id="canvas" width="720px" height="480px"></canvas>
+
+
+      <div class="menuLeiste">
+  
+        <button id="StartGame" onclick="worldGameLogic.startGameButtonPressed()">
+          Start Game
+        </button>
+
+  
+        <div class="menu">
+          <img
+            id="gamePad"
+            class="menuChildren"
+            onclick="worldUI.showMovementInstructions()"
+            src="img/10_start_screen/joystick.png"
+            alt="GAMEPAD"
+          />
+          <img
+            id="info"
+            class="menuChildren"
+            onclick="worldUI.showInfoAboutGame()"
+            src="img/10_start_screen/info.png"
+            alt="INFO"
+          />
+        </div>
+
+    
+        <div id="divForSpeakersAndGamePad">
+          <img id="speakerOn" src="img/5_background/speaker/speaker.png" alt="SPEAKER ON" onclick="worldUI.turnSpeakerOff()">
+          <img id="speakerOff" src="img/5_background/speaker/switch_off_speaker.png" alt="SPEAKER OFF" onclick="worldUI.turnSpeakerOn()">
+          <img id="gamePad2" onclick="worldUI.showMovementInstructionsInTheGame()" src="img/10_start_screen/joystick.png" alt="GAMEPAD">
+        </div>
+      </div>
+
+
+      <div id="instructions2">
+          <div class="instructionDIV">
+            LEFT:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/left_keyboard.png"
+            />
+          </div>
+          <div class="instructionDIV">
+            RIGHT:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/right_keyboard.png"
+            />
+          </div>
+          <div class="instructionDIV">
+            JUMP:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/space_keyboard.png"
+            />
+          </div>
+          <div class="instructionDIV">
+            THROW BOTTLE:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/D_keyboard.png"
+            />
+          </div>
+      </div>
+
+
+      <div id="parentDivOfInstructions">
+        <img class="returnButtons" src="img/5_background/return.png" alt="RETURN" onclick="worldGameLogic.return()">
+        <div id="howToPlay">HOW TO PLAY ?</div>
+        <div id="instructions">
+          <div class="instructionDIV">
+            LEFT:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/left_keyboard.png"
+            />
+          </div>
+          <div class="instructionDIV">
+            RIGHT:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/right_keyboard.png"
+            />
+          </div>
+          <div class="instructionDIV">
+            JUMP:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/space_keyboard.png"
+            />
+          </div>
+          <div class="instructionDIV">
+            THROW BOTTLE:
+            <img
+              class="instructionIMG"
+              src="img/10_start_screen/D_keyboard.png"
+            />
+          </div>
+        </div>
+      </div>
+
+
+      <div id="parentDivOfInfo">
+        <img class="returnButtons" src="img/5_background/return.png" alt="RETURN" onclick="worldGameLogic.return()">
+        <div id="infoDiv">
+          <span id="textInformationAboutGame">To win in the game, the Big Chicken must be defeated by throwing bottles at him. Small chickens can be killed by jumping on them.</span>
+        </div>
+      </div>
+
+
+      <button id="playAgain" onclick="worldGameLogic.resetGame()">Play Again</button>
+
+
+      <div id="containerForButtons">
+        <div class="displayFlex">
+          <button id="btnLeft" class="buttons">
+            ←
+          </button>
+          <button id="btnRight" class="buttons">→</button>
+        </div>
+        <div class="displayFlex">
+          <button id="btnJump" class="buttons">
+            ↑
+          </button>
+          <button id="btnThrow" class="buttons">
+            <img
+              id="bottle"
+              src="img/6_salsa_bottle/salsa_bottle.png"
+              alt="Bottle"
+            />
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="js/game.js"></script>
+
+  </body>
+
+</html>
